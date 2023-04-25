@@ -1,27 +1,26 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/UhEinarp)
-# Project
+# HockeyGym: Massive Parallel Training on the Air Hockey Game with Hierarchical RL
 
-## What to do
+Mike Liu xl142
 
-Your goal is to apply your understanding of reinforcement learning algorithms to a research problem of interest to you. Example types of applications are:
-- Apply an algorithm (either learned in class or outside of class) to a problem of interest.
-- Replicate an existing paper that uses reinforcement learning.
+## Install and Run
 
+1. Install IsaacGym Release 4 (https://developer.nvidia.com/isaac-gym). Docker install is recommended. The docker files I use for cloud server training  is (https://github.com/LXYYY/rlgpu_docker). Or please use the script from IsaacGym to generate a conda environment. Manually install the IsaacGym is not recommended.
 
-## What to submit
+2. Follow the installation instructions in https://github.com/LXYYY/legged_gym. If you successfully install the docker or the generated conda environment by IsaacGym, you will only need to:
+   ```
+   cd air_hockey_challenge && pip install -e .
+   cd rsl_rl && pip install -e .
+   cd legged_gym && pip install -e .
+   pip install mushroom-rl mujoco
+   ```
 
-### 1. Project proposal
+3. Train the model:
+   ```
+   python legged_gym/legged_gym/scripts/train.py --task=air_hockey_planar
+   ```
+   add `--headless` to run without visualization. And remember to set the number of robots here https://github.com/LXYYY/legged_gym/blob/0eaa2e1ee13aa46965cec82990b7670ed9f95c25/legged_gym/envs/air_hockey/air_hockey_config.py#L11. For a laptop 3070, recommend 300 with rendering, 1000 without. 
 
-Sign-up for a 10-minute time slot to meet with Huy and discuss your proposed project. Meetings will occur during class time on Thursday, March 23.
-
-**Due: 10am on Thursday, March 23**
-
-### 2. Final code and results
-
-Submit a GitHub repository to Gradescope that contains your code and a presentation documenting your problem, methods, and results. You will present your results in a 5-10 minute presentation during the last few classes of the semester.
-
-Your code should include a clear main.py file that someone could run to replicate your results, as well as a file clarifying required packages (e.g., a Conda env.yml file or pip requirements.txt file).
-
-Your presentation should mimic a short conference paper presentation.
-
-**Due: 10am on Tuesday, May 2**
+4. Play:
+    ```
+   python legged_gym/legged_gym/scripts/play.py --task=air_hockey_planar
+   ```

@@ -1,0 +1,9 @@
+[submodule "legged_gym.git"]
+	path = legged_gym
+	url = git@github.com:LXYYY/legged_gym.git
+[submodule "rsl_rl.git"]
+	path = rsl_rl
+	url = git@github.com:LXYYY/rsl_rl.git
+[submodule "air_hockey_challenge.git"]
+	path = air_hockey_challenge
+	url = git@github.com:LXYYY/air_hockey_challenge.git
